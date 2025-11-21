@@ -1,0 +1,22 @@
+:root {
+  --primary: #D0A9F5;
+  --primary-dark: #A872E3;
+  --background-light: #fdfcff;
+  --background-dark: #1a161f;
+  --soft-blush: #FDECF4;
+  --sky-blue: #EAE4F4;
+  --muted-teal: #B983D1;
+  --dark-gray: #3C3242;
+  --medium-gray: #73687c;
+}
+
+.day-cell {
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}

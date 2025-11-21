@@ -1,0 +1,16 @@
+from rest_framework.serializers import ModelSerializer
+from .models import Usuario
+
+class UsuarioSerializer(ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = ['id','username','password','email','first_name','last_name','fecha_nacimiento','rol','foto_perfil','bio']
+
+    def create(self,validated_data):
+        clave = validated_data.pop('password')
+        usuario = Usuario(**validated_data)
+        usuario.set_password(clave)
+        usuario.save()
+        return usuario
+
+    
