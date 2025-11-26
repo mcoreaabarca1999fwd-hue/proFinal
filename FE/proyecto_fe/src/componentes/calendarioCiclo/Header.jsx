@@ -18,7 +18,7 @@ export default function Header() {
               <path d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" />
             </svg>
           </Box>
-          <Typography variant="h6" fontWeight="bold">Almafloral</Typography>
+          <Typography variant="h6" fontWeight="bold">AlmaFloral</Typography>
         </Box>
 
         {/* Icons */}

@@ -267,7 +267,9 @@ export default function CreateAccountForm() {
         {/* FOOTER */}
         <Typography textAlign="center" sx={{ color: "#333", fontSize: "0.9rem" }}>
           ¿Ya tienes una cuenta?{" "}
-          <span style={{ fontWeight: 700, color: "#D67C97", cursor: "pointer" }}>
+          <span
+            onClick={() => navigate('/login')}
+          style={{ fontWeight: 700, color: "#D67C97", cursor: "pointer" }}>
             Inicia sesión
           </span>
         </Typography>
