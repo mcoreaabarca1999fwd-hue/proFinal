@@ -1,16 +1,21 @@
 import { Box, Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
   return (
     <Box px={{ xs: 3, lg: 10 }} py={{ xs: 8, md: 24 }} display="flex" flexDirection={{ xs: "column-reverse", md: "row" }} alignItems="center" gap={6}>
       <Box flex={1} display="flex" flexDirection="column" gap={3}>
-        <Typography variant="h3" fontWeight="bold">
+        <Typography variant="h3" sx={{ color: "#333" }} fontWeight="bold">
           Conecta con tu ciclo. Entiende tu cuerpo.
         </Typography>
         <Typography variant="body1" color="text.secondary">
           Nuestra aplicación te ayuda a llevar un seguimiento menstrual preciso y a recibir consejos personalizados para tu bienestar diario.
         </Typography>
-        <Button variant="contained" color="primary" sx={{ maxWidth: 300 }}>
+        <Button variant="contained"  sx={{ background:"#9946ec", maxWidth: 300 }}
+        onClick={()=>{
+                navigate('/registro')
+              }}>
           Empieza a cuidarte hoy
         </Button>
       </Box>

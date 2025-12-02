@@ -1,9 +1,8 @@
 import React from "react";
 import { Box, Typography, IconButton, Avatar } from "@mui/material";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import SettingsIcon from "@mui/icons-material/Settings";
 import MenuIcon from "@mui/icons-material/Menu";
-
+import EmojiNatureIcon from "@mui/icons-material/EmojiNature";
 export default function NavBar() {
   return (
     <Box
@@ -21,9 +20,7 @@ export default function NavBar() {
       <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
         <Box sx={{ color: "#eb47b4" }}>
           {/* simple circular svg icon */}
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM11 17h2v2h-2v-2zM11 7h2v8h-2V7z"/>
-          </svg>
+          <EmojiNatureIcon style={{ fontSize: 32 }} />
         </Box>
         <Typography sx={{ fontWeight: 700, fontSize: 18, color: "#181115" }}>AlmaFloral</Typography>
       </Box>
@@ -39,9 +36,6 @@ export default function NavBar() {
         </Box>
 
         <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-          <IconButton size="small" sx={{ bgcolor: "#f4eef2" }}>
-            <NotificationsIcon sx={{ color: "#88637c" }} />
-          </IconButton>
           <IconButton size="small" sx={{ bgcolor: "#f4eef2" }}>
             <SettingsIcon sx={{ color: "#88637c" }} />
           </IconButton>

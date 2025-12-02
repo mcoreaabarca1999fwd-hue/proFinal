@@ -7,7 +7,7 @@ class EtiquetaForo(models.Model):
 
 class Publicacion(models.Model):
     Usuario = models.ForeignKey('usuarios.Usuario', on_delete=models.CASCADE)
-    EtiquetaForo = models.ForeignKey(EtiquetaForo, on_delete=models.CASCADE, null=True, blank=True)
+    etiquetaForo = models.CharField(max_length=20, null=True, blank=True)
     titulo = models.CharField(max_length=200)
     contenido = models.TextField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
@@ -23,5 +23,3 @@ class Reaccion(models.Model):
     tipo = models.CharField(max_length=20, choices=[('me_gusta', 'Me gusta'), ('me_encanta', 'Me encanta')])
     fecha = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        unique_together = ('usuario', 'publicacion')

@@ -14,7 +14,12 @@ export default function PostCard({
   comments,
   avatar,
   liked,
-}) {
+}) 
+{
+  const formatTime = (time) => {
+    const date = new Date(time);
+    return date.toLocaleDateString() + " " + date.toLocaleTimeString();
+  }
   return (
     <Box
       sx={{
@@ -37,7 +42,7 @@ export default function PostCard({
               {user}
             </Typography>
             <Typography fontSize={12} color="#88636f">
-              {time}
+              {formatTime(time)}
             </Typography>
           </Box>
         </Box>

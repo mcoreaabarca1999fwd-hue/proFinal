@@ -9,7 +9,7 @@ const testimonials = [
 export default function TestimonialsSection() {
   return (
     <Box px={{ xs: 3, lg: 10 }} py={{ xs: 8, md: 24 }}>
-      <Typography variant="h4" fontWeight="bold" textAlign="center" mb={6}>Lo que dicen nuestras usuarias</Typography>
+      <Typography variant="h4" fontWeight="bold" textAlign="center" mb={6} sx={{ color: "#333" }}>Lo que dicen nuestras usuarias</Typography>
       <Box display="grid" gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr", lg: "repeat(3,1fr)" }} gap={4}>
         {testimonials.map((t, idx) => (
           <Box key={idx} p={3} borderRadius={2} border="1px solid rgba(0,0,0,0.1)" display="flex" flexDirection="column" gap={2} bgcolor="background.default">

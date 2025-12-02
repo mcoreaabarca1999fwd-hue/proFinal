@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'usuarios',
     'corsheaders',
-    'ciclos'
+    'ciclos',
+    'foro',
 ]
 
 AUTH_USER_MODEL = "usuarios.Usuario"

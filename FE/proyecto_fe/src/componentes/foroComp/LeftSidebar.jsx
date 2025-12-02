@@ -3,8 +3,11 @@ import EditIcon from "@mui/icons-material/Edit";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ScheduleIcon from "@mui/icons-material/Schedule";
+import { useState } from "react";
+import CrearPublicacionModal from "./CrearPublicacionModal";
 
 export default function LeftSidebar() {
+  const [mostrarModal, setMostrarModal] = useState(false);
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
       {/* Crear publicación */}
@@ -30,10 +33,13 @@ export default function LeftSidebar() {
             fontWeight: "700",
           }}
           startIcon={<EditIcon />}
+          onClick={() => setMostrarModal(true)}
         >
           Crear Publicación
         </Button>
-
+          {mostrarModal && (
+            <CrearPublicacionModal open={mostrarModal} onClose={()=>setMostrarModal(false)}/>
+          )}
         {/* Navegación */}
         <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
           <Item icon={<ScheduleIcon />} label="Recientes" active />
@@ -52,7 +58,7 @@ export default function LeftSidebar() {
         }}
       >
         <Typography fontSize={16} fontWeight={700} mb={2} px={1}>
-          Categorías
+          Etiquetas
         </Typography>
 
         <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>

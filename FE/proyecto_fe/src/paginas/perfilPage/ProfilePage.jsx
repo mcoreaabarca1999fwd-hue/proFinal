@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Box, Typography } from "@mui/material";
-import TopNavBar from "../../componentes/perfilComp/TopNavBar";
+import NavBar from "../../componentes/educacion/NavBar";
 import ProfileHeader from "../../componentes/perfilComp/ProfileHeader";
 import AccordionSection from "../../componentes/perfilComp/AccordionSection";
 import PersonalInfo from "../../componentes/perfilComp/PersonalInfo";
@@ -10,7 +10,7 @@ import PrivacySecurity from "../../componentes/perfilComp/PrivacySecurity";
 export default function ProfilePage() {
   return (
     <>
-      <TopNavBar />
+      <NavBar />
       <Container maxWidth="lg" sx={{ py: 5 }}>
         <Typography variant="h4" fontWeight="bold" mb={3}>Mi Perfil</Typography>
         <ProfileHeader />

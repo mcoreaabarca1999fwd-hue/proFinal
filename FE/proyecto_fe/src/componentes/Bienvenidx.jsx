@@ -71,7 +71,7 @@ export default function Bienvenidx() {
             color: "#121212",
           }}
         >
-          ¡Bienvenida {usuario.first_name}!
+          ¡Hola de nuevo, {usuario.first_name}!
         </Typography>
 
         {/* Descripción */}

@@ -13,6 +13,10 @@ import UsersPage from '../paginas/adminPage/UsersPage'
 import ModeracionForo from '../paginas/adminPage/ModeracionForo'
 import ReportesPage from '../paginas/adminPage/ReportesPage'
 import LandingPage from '../paginas/homeP/LandingPage'
+import PagePreguntas from '../paginas/preguntasPage/PagePreguntas'
+import PageArticulos from '../paginas/articulosPage/PageArticulos'
+import CrearArticuloPage from '../paginas/articulosPage/CrearArticuloPage'
+import RegistroPro from '../paginas/RegistroPro'
 
 const Routing = () => {
     return(
@@ -32,6 +36,10 @@ const Routing = () => {
                 <Route path='/admin-moderacion-foro' element={<ModeracionForo/>}/>
                 <Route path='/admin-reportes' element={<ReportesPage/>}/>
                 <Route path='/' element={<LandingPage/>}/>
+                <Route path='/preguntas-frecuentes' element={<PagePreguntas/>}/>
+                <Route path='/articulos' element={<PageArticulos/>}/>
+                <Route path='/crear-articulo' element={<CrearArticuloPage/>}/>
+                <Route path='/registro-pro' element={<RegistroPro/>}/>
             </Routes>
         </Router>
     )
