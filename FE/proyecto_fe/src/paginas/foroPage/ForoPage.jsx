@@ -1,11 +1,12 @@
 import { Box, Grid } from "@mui/material";
-import Header from "../../componentes/foroComp/Header";
 import LeftSidebar from "../../componentes/foroComp/LeftSidebar";
-import RightWidgets from "../../componentes/foroComp/RightWidgets";
+import NavBar from "../../componentes/educacion/NavBar";
 import PostCard from "../../componentes/foroComp/PostCard";
 import { useEffect, useState } from "react";
 import { getData } from "../../servicios/fetch";
 import { Typography } from "@mui/material";
+import Footer from "../../componentes/homePage/Footer";
+
 export default function ForoPage() {
   const [publicacions,setPublicaciones] = useState([])
 
@@ -19,7 +20,7 @@ export default function ForoPage() {
   },[])
   return (
     <Box sx={{ bgcolor: "#f8f6f6", minHeight: "100vh" }}>
-      <Header />
+      <NavBar />
 
       <Box sx={{ maxWidth: 1280, mx: "auto", px: 3, py: 4 }}>
         <Grid container spacing={4}>
@@ -57,6 +58,7 @@ export default function ForoPage() {
     
         </Grid>
       </Box>
+      <Footer />
     </Box>
   );
 }

@@ -6,6 +6,7 @@ import CategoryChips from "../../componentes/educacion/CategoryChips";
 import FeaturedCard from "../../componentes/educacion/FeaturedCard";
 import ResourceCard from "../../componentes/educacion/ResourceCard";
 import SectionTitle from "../../componentes/educacion/SectionTitle";
+import Footer from "../../componentes/homePage/Footer";
 
 export default function RecursosPage() {
   const resources = [
@@ -76,6 +77,7 @@ export default function RecursosPage() {
           </Button>
         </Box>
       </Box>
+      <Footer />
     </Box>
   );
 }

@@ -5,6 +5,8 @@ from .serializers import UsuarioSerializer
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
 from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import IsAuthenticated
 
 class UsuarioCreateView(ListCreateAPIView):
     queryset = Usuario.objects.all()
@@ -12,6 +14,7 @@ class UsuarioCreateView(ListCreateAPIView):
 
 class UsuarioPorIdView(ListCreateAPIView):
     serializer_class = UsuarioSerializer
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         id_usuario = self.kwargs['id']
@@ -26,9 +29,11 @@ class UsuarioLogin(APIView):
         usuario = authenticate(username=username,password=password)
 
         if usuario is not None:
+            token = RefreshToken.for_user(usuario).access_token
             return Response({
                 'message': "Inicio exitoso",
-                'id': usuario.id
+                'id': usuario.id,
+                'token': str(token)
             })
         else:
             return Response({

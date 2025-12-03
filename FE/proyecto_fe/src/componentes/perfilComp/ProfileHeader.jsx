@@ -21,7 +21,7 @@ export default function ProfileHeader() {
           <Typography color="text.secondary">{usuario.email}</Typography>
         </Box>
       </Box>
-      <Button variant="outlined" color="primary">Cambiar Foto</Button>
+      <Button sx={{background: "#9947eb", color:"#ffffff"}} variant="outlined" color="primary">Cambiar Foto</Button>
     </Box>
   );
 }

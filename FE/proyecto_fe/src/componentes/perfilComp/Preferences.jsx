@@ -39,7 +39,7 @@ export default function Preferences() {
       </Box>
 
       <Box display="flex" justifyContent="flex-end">
-        <Button variant="contained" color="primary">Guardar Preferencias</Button>
+        <Button sx={{background: "#9947eb", color:"#ffffff"}} variant="contained" color="primary">Guardar Preferencias</Button>
       </Box>
     </Box>
   );

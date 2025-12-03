@@ -54,10 +54,10 @@ export default function FormLogin() {
             <Box display="flex" flexDirection="column" gap={3}>
 
                 <Box>
-                    <Typography mb={1} fontWeight={600}>Correo electrónico</Typography>
+                    <Typography mb={1} fontWeight={600}>Nombre de Usuario</Typography>
                     <TextField
                         fullWidth
-                        placeholder="tu@correo.com"
+                        placeholder="Nombre de usuario"
                         variant="outlined"
                         onChange={(e) => setUsername(e.target.value)}
                         InputProps={{

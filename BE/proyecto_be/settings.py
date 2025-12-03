@@ -1,3 +1,4 @@
+from datetime import timedelta
 """
 Django settings for proyecto_be project.
 
@@ -43,9 +44,21 @@ INSTALLED_APPS = [
     'corsheaders',
     'ciclos',
     'foro',
+    'rest_framework_simplejwt',
 ]
 
 AUTH_USER_MODEL = "usuarios.Usuario"
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME":  timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+}
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

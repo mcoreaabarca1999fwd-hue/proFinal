@@ -4,6 +4,7 @@ import DownloadIcon from "@mui/icons-material/Download";
 export default function StatsReport() {
   return (
     <Box sx={{
+      width: "125%",
       bgcolor: "white",
       p: 4,
       borderRadius: 3,

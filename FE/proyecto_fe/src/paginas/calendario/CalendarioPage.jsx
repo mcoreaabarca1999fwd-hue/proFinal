@@ -1,19 +1,20 @@
-import { Grid, Box, Typography } from "@mui/material";
+import { Grid, Box, Typography, Button } from "@mui/material";
 import LayoutContainer from "../../componentes/calendarioCiclo/LayoutContainer";
 import CalendarCycle from "../../componentes/calendarioCiclo/CalendarCycle";
 import StatsReport from "../../componentes/calendarioCiclo/StatsReport";
 import DayOverview from "../../componentes/calendarioCiclo/DayOverview";
 import Predictions from "../../componentes/calendarioCiclo/Predictions";
 import HealthTips from "../../componentes/calendarioCiclo/HealthTips";
-import Header from "../../componentes/calendarioCiclo/Header";
-
+import NavBar from "../../componentes/educacion/NavBar";
+import Footer from "../../componentes/homePage/Footer";
+import { red } from "@mui/material/colors";
 
 export default function Dashboard() {
   return (
     <LayoutContainer>
-
-      <Header />
-
+      
+      <NavBar />
+      
       <Box mt={4} mb={3}>
         <Typography variant="h4" fontWeight="bold">Hola, María</Typography>
         <Typography color="var(--medium-gray)">
@@ -21,14 +22,14 @@ export default function Dashboard() {
         </Typography>
       </Box>
 
-      <Grid container spacing={4}>
+      <Grid container spacing={30}>
 
         {/* LEFT column */}
         <Grid item xs={12} md={8} display="flex" flexDirection="column" gap={4}>
 
           <CalendarCycle />
           <StatsReport />
-
+          
         </Grid>
 
         {/* RIGHT column */}
@@ -42,6 +43,10 @@ export default function Dashboard() {
 
       </Grid>
 
+      <Footer />
+
     </LayoutContainer>
+
+    
   );
 }

@@ -6,6 +6,7 @@ import AccordionSection from "../../componentes/perfilComp/AccordionSection";
 import PersonalInfo from "../../componentes/perfilComp/PersonalInfo";
 import Preferences from "../../componentes/perfilComp/Preferences";
 import PrivacySecurity from "../../componentes/perfilComp/PrivacySecurity";
+import Footer from "../../componentes/homePage/Footer";
 
 export default function ProfilePage() {
   return (
@@ -28,7 +29,10 @@ export default function ProfilePage() {
             <PrivacySecurity />
           </AccordionSection>
         </Box>
+
       </Container>
+
+      <Footer/>
     </>
   );
 }

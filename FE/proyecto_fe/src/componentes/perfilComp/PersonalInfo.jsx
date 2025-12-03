@@ -38,7 +38,7 @@ export default function PersonalInfo() {
         </Grid>
       </Grid>
       <Box display="flex" justifyContent="flex-end" mt={2}>
-        <Button variant="contained" color="primary">Guardar Cambios</Button>
+        <Button sx={{background: "#9947eb", color:"#ffffff"}} variant="contained" color="primary">Guardar Cambios</Button>
       </Box>
     </form>
   );

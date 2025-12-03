@@ -6,6 +6,7 @@ import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 export default function HealthTips() {
   return (
     <Box sx={{
+      height: "125%",
       bgcolor: "white",
       p: 4,
       borderRadius: 3,

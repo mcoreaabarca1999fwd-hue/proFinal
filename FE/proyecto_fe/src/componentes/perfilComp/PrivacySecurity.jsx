@@ -15,13 +15,13 @@ export default function PrivacySecurity() {
         </Grid>
       </Grid>
       <Box display="flex" justifyContent="flex-end" mt={2}>
-        <Button variant="outlined" color="primary">Cambiar Contraseña</Button>
+        <Button sx={{color:"#9947eb", borderColor:"#9947eb"}} variant="outlined">Cambiar Contraseña</Button>
       </Box>
 
       <Box mt={4}>
         <Typography variant="subtitle1" fontWeight="bold" mb={1}>Gestión de Cuenta</Typography>
         <Typography color="text.secondary" mb={1}>Elimina tu cuenta y todos tus datos de forma permanente. Esta acción no se puede deshacer.</Typography>
-        <Button variant="outlined" color="error">Eliminar Cuenta</Button>
+        <Button sx={{color:"#9947eb", borderColor:"#9947eb"}} variant="outlined" >Eliminar Cuenta</Button>
       </Box>
     </Box>
   );

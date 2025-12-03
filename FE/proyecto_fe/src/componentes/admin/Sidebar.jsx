@@ -7,8 +7,10 @@ import FlagIcon from "@mui/icons-material/Flag";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -35,22 +37,34 @@ export default function Sidebar() {
           <ListItemText primary="Dashboard" />
         </ListItemButton>
 
-        <ListItemButton>
-          <ListItemIcon><GroupIcon /></ListItemIcon>
+        <ListItemButton onClick={()=>{
+                navigate('/admin-users')
+              }}><ListItemIcon><GroupIcon /></ListItemIcon>
           <ListItemText primary="Gestión de Usuarios" />
         </ListItemButton>
 
-        <ListItemButton>
-          <ListItemIcon><ForumIcon /></ListItemIcon>
+        <ListItemButton
+        onClick={()=>{
+                navigate('/admin-moderacion-foro')
+              }}
+        ><ListItemIcon><ForumIcon /></ListItemIcon>
           <ListItemText primary="Moderación de Foro" />
         </ListItemButton>
 
-        <ListItemButton>
+        <ListItemButton
+        onClick={()=>{
+                navigate('/admin-reportes')
+              }}
+        >
           <ListItemIcon><ArticleIcon /></ListItemIcon>
           <ListItemText primary="Gestión de Contenido" />
         </ListItemButton>
 
-        <ListItemButton>
+        <ListItemButton
+        onClick={()=>{
+                navigate('/admin-reportes')
+              }}
+        >
           <ListItemIcon><FlagIcon /></ListItemIcon>
           <ListItemText primary="Reportes" />
         </ListItemButton>
