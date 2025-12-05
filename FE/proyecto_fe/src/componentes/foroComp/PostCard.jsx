@@ -25,6 +25,7 @@ export default function PostCard({
       sx={{
         bgcolor: "#fff",
         border: "1px solid #e5e7eb",
+        width: "300%",
         p: 4,
         borderRadius: 3,
         display: "flex",

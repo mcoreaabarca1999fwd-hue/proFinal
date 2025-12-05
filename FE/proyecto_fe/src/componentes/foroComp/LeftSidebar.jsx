@@ -5,8 +5,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import { useState } from "react";
 import CrearPublicacionModal from "./CrearPublicacionModal";
-
+import { useNavigate } from "react-router-dom";
 export default function LeftSidebar() {
+  const navigate = useNavigate();
   const [mostrarModal, setMostrarModal] = useState(false);
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -33,9 +34,17 @@ export default function LeftSidebar() {
             fontWeight: "700",
           }}
           startIcon={<EditIcon />}
-          onClick={() => setMostrarModal(true)}
+          onClick={() => {
+            if (localStorage.getItem('token')) {
+              setMostrarModal(true)
+              return
+            }else{
+              navigate('/login')
+            }
+            
+          }}
         >
-          Crear Publicación
+          {localStorage.getItem('token')? 'Crear Publicación' : 'Inicia sesión para crear publicación'}
         </Button>
           {mostrarModal && (
             <CrearPublicacionModal open={mostrarModal} onClose={()=>setMostrarModal(false)}/>

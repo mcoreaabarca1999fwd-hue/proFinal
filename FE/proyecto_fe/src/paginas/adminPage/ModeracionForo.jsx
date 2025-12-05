@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import Sidebar from "../../componentes/admin/moderacion/Sidebar";
+import Sidebar from "../../componentes/admin/Sidebar";
 import FiltersBar from "../../componentes/admin/moderacion/FiltersBar";
 import ReportTable from "../../componentes/admin/moderacion/ReportTable";
 import { useState, useMemo } from "react";

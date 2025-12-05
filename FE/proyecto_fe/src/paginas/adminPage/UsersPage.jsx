@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-import Sidebar from "../../componentes/admin/userPage/Sidebar.jsx";
+import Sidebar from "../../componentes/admin/Sidebar.jsx";
 import Header from "../../componentes/admin/userPage/Header.jsx";
 import SearchBar from "../../componentes/admin/userPage/SearchBar.jsx";
 import UserTable from "../../componentes/admin/userPage/UserTable.jsx";

@@ -30,6 +30,7 @@ export default function FormLogin() {
         if (peticion.message === "Inicio exitoso") {
             localStorage.setItem('idUsuario', peticion.id)
             navigate('/perfil')
+            localStorage.setItem('token', peticion.token)
         }else{
             alert('Usuario o contraseña incorrectos')
         }

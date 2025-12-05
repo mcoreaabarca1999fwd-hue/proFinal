@@ -1,7 +1,7 @@
 import { Box, Grid } from "@mui/material";
 
 // Componentes que creamos
-import Sidebar from "../../componentes/admin/analiticas/Sidebar";
+import Sidebar from "../../componentes/admin/Sidebar";
 import HeaderSection from "../../componentes/admin/analiticas/HeaderSection";
 import ReportControls from "../../componentes/admin/analiticas/ReportControls";
 import DAUChart from "../../componentes/admin/analiticas/DAUChart";

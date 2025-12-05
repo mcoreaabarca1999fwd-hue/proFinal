@@ -15,8 +15,14 @@ import {
 
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useState } from "react";
 
 // Ejemplo de datos (luego puedes pasarlos como props)
+// const [users, setUsers] = useState([]);
+
+// Hacer un useEffect para traer los usuarios desde el backend
+
+// El endpoint es el crear-usuario/ y el método es GET 
 const users = [
   {
     id: 1,

@@ -17,6 +17,9 @@ import PagePreguntas from '../paginas/preguntasPage/PagePreguntas'
 import PageArticulos from '../paginas/articulosPage/PageArticulos'
 import CrearArticuloPage from '../paginas/articulosPage/CrearArticuloPage'
 import RegistroPro from '../paginas/RegistroPro'
+import RolesPage from '../paginas/adminPage/RolesPage'
+import AboutPage from '../paginas/pageAboutUs/AboutPage'
+import CometariosPage from '../paginas/foroPage/comentariosPage'    
 
 const Routing = () => {
     return(
@@ -40,6 +43,9 @@ const Routing = () => {
                 <Route path='/articulos' element={<PageArticulos/>}/>
                 <Route path='/crear-articulo' element={<CrearArticuloPage/>}/>
                 <Route path='/registro-pro' element={<RegistroPro/>}/>
+                <Route path='/admin-roles' element={<RolesPage/>}/>
+                <Route path='/about-us' element={<AboutPage/>}/>
+                <Route path='/comentarios' element={<CometariosPage/>}/>
             </Routes>
         </Router>
     )

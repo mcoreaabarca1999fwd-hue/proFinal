@@ -3,7 +3,7 @@ import LeftSidebar from "../../componentes/foroComp/LeftSidebar";
 import NavBar from "../../componentes/educacion/NavBar";
 import PostCard from "../../componentes/foroComp/PostCard";
 import { useEffect, useState } from "react";
-import { getData } from "../../servicios/fetch";
+import { getData, getDataAutenticado } from "../../servicios/fetch";
 import { Typography } from "@mui/material";
 import Footer from "../../componentes/homePage/Footer";
 
@@ -13,7 +13,7 @@ export default function ForoPage() {
   // se debe hacer un useEffect que consulte al get data las publicaciones
   useEffect(()=>{
     async function mostrarPublicacion() {
-      const respuesta = await getData(`foro/publicacion/`)
+      const respuesta = await getData(`foro/ver-publicacion/`)
       setPublicaciones(respuesta)
     }
     mostrarPublicacion()

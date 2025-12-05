@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
-import { postData } from "../../servicios/fetch";
+import { postData, postDataAutenticado } from "../../servicios/fetch";
 export default function CrearPublicacionModal({ open, onClose }) {
   const [titulo, setTitulo] = useState('')
   const [contenido, setContenido] = useState('')
@@ -26,7 +26,7 @@ export default function CrearPublicacionModal({ open, onClose }) {
           etiquetaForo: hashtags,
           Usuario:localStorage.getItem('idUsuario')
       }
-      const respuesta = await postData(`foro/publicacion/`, objPublicacion)
+      const respuesta = await postDataAutenticado(`foro/publicacion/`, objPublicacion)
       console.log(respuesta);
   }
   return (
@@ -57,7 +57,8 @@ export default function CrearPublicacionModal({ open, onClose }) {
           borderColor: "divider",
         }}
       > <Typography variant="h6" fontWeight={700}>
-          Crear Nueva Publicación </Typography>
+          Crear Nueva Publicación
+           </Typography>
 
         ```
         <IconButton onClick={onClose}>
