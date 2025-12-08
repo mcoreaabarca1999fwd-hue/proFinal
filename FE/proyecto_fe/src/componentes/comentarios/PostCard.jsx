@@ -19,7 +19,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import Comment from "./Comment";
 import CommentInput from "./CommentInput";
 
-export default function PostCard() {
+export default function PostCard({usuario,fechaPublicacion,titulo,descripcion,tags}) {
   return (
     <Card sx={{ p: 2, mb: 4, borderRadius: 3 }}>
       {/* HEADER */}
@@ -27,8 +27,8 @@ export default function PostCard() {
         avatar={
           <Avatar src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS_AIGKo5..." />
         }
-        title={<Typography fontWeight={700}>Ana G.</Typography>}
-        subheader="hace 5 minutos"
+        title={<Typography fontWeight={700}>{usuario}</Typography>}
+        subheader={<Typography variant="body2">{fechaPublicacion}</Typography>}
         action={
           <IconButton>
             <MoreVertIcon />
@@ -38,11 +38,11 @@ export default function PostCard() {
 
       <CardContent sx={{ pt: 0 }}>
         <Typography variant="h6" fontWeight={700}>
-          ¿Alguien más siente más antojos durante la fase lútea?
+         {titulo}
         </Typography>
 
         <Typography mt={1}>
-          Últimamente he notado que me apetece mucho el dulce justo antes de la regla…
+          {descripcion}
         </Typography>
 
         {/* TAGS */}
@@ -57,12 +57,12 @@ export default function PostCard() {
             <IconButton>
               <FavoriteIcon color="primary" />
             </IconButton>
-            <Typography>125</Typography>
+            <Typography>0</Typography>
 
             <IconButton>
               <ChatBubbleOutlineIcon />
-            </IconButton>
-            <Typography>42</Typography>
+            </IconButton> 
+            <Typography>0</Typography>
           </Stack>
 
           <IconButton>
@@ -81,7 +81,6 @@ export default function PostCard() {
             Comentarios
           </Typography>
 
-          <Comment />
           <Comment />
         </Box>
       </CardContent>

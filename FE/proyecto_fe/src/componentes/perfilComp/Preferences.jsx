@@ -24,27 +24,16 @@ export default function Preferences() {
     <Box>
       <Grid container spacing={2} mb={2}>
         <Grid item xs={12} md={6}>
+          <p>Duracion promedio</p>
           <TextField   fullWidth type="number"   value={valorDuracionPromedio}  inputProps={{ min: 20, max: 38 }}/>
         </Grid>
         <Grid item xs={12} md={6}>
+          <p>Duracion menstruacion</p>
           <TextField fullWidth type="number"  value={valorDuracionMenstruacion} inputProps={{ min: 3, max: 8 }}/>
         </Grid>
         <Grid item xs={12} md={6}>
         </Grid>
       </Grid>
-
-      <Box mb={2}>
-        <Typography variant="subtitle1" mb={1}>Notificaciones</Typography>
-        <FormGroup>
-          <FormControlLabel control={<Switch defaultChecked />} label="Recordatorio de inicio de periodo" />
-          <FormControlLabel control={<Switch defaultChecked />} label="Aviso de ovulación" />
-          <FormControlLabel control={<Switch />} label="Recordatorios de píldora" />
-        </FormGroup>
-      </Box>
-
-      <Box display="flex" justifyContent="flex-end">
-        <Button sx={{background: "#9947eb", color:"#ffffff"}} variant="contained" color="primary">Guardar Preferencias</Button>
-      </Box>
     </Box>
   );
 }

@@ -19,38 +19,126 @@ export default function TopNavBar() {
       borderBottom="1px solid #efe7ec"
       bgcolor="#ffffff"
       backdropFilter="blur(6px)"
+      sx={{
+        transition: "box-shadow 0.3s ease",
+        "&:hover": {
+          boxShadow: "0px 4px 12px rgba(0,0,0,0.08)",
+        },
+      }}
     >
+      {/* Logo */}
       <Box display="flex" alignItems="center" gap={1}>
-        <Box color="#9946ec">
-          <Box sx={{ color: "#9946ec" }}>
-          {/* simple circular svg icon */}
+        <Box
+          onClick={() => navigate('/about-us')}
+          sx={{
+            color: "#9946ec",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "transform 0.3s ease",
+            "&:hover": { transform: "rotate(10deg) scale(1.1)" },
+          }}
+        >
           <EmojiNatureIcon style={{ fontSize: 32 }} />
         </Box>
-        </Box>
-        <Typography fontWeight="bold" variant="h6" sx={{ color: "#9946ec" }}>
+        <Typography
+        onClick={() => navigate('/')}
+          fontWeight="bold"
+          variant="h6"
+          sx={{
+            cursor: "pointer",
+            color: "#9946ec",
+            transition: "color 0.3s ease",
+            "&:hover": { color: "#7B2CBF" },
+          }}
+        >
           AlmaFloral
         </Typography>
       </Box>
+
+      {/* Links + Botones */}
       <Box display={{ xs: "none", md: "flex" }} alignItems="center" gap={4}>
         <Box display="flex" gap={3}>
-          <Typography sx={{fontSize: 14, color: "#333", cursor: "pointer" }}>Funcionalidades</Typography>
-          <Typography sx={{fontSize: 14, color: "#333", cursor: "pointer" }}>Comunidad</Typography>
-          <Typography sx={{fontSize: 14, color: "#333", cursor: "pointer" }}>Recursos</Typography>
-        </Box>
-        <Box display="flex" gap={1}>
-          <Button variant="outlined" sx={{color:"#9947eb", borderColor: "#9947eb" }} size="small" 
-              onClick={()=>{
-                navigate('/login')
+          {["Funcionalidades", "Comunidad", "Recursos"].map((item, idx) => (
+            <Typography
+              key={idx}
+              sx={{
+                fontSize: 14,
+                color: "#333",
+                cursor: "pointer",
+                position: "relative",
+                transition: "color 0.3s ease",
+                "&:hover": {
+                  color: "#9946ec",
+                },
+                "&:after": {
+                  content: '""',
+                  position: "absolute",
+                  bottom: -4,
+                  left: 0,
+                  width: "0%",
+                  height: "2px",
+                  bgcolor: "#9946ec",
+                  transition: "width 0.3s ease",
+                },
+                "&:hover:after": {
+                  width: "100%",
+                },
               }}
-            >Iniciar Sesión</Button>
-          <Button variant="contained" size="small" sx={{ background: "#9947eb" }} color="primary"
-            onClick={()=>{
-              navigate('/registro')
+            >
+              {item}
+            </Typography>
+          ))}
+        </Box>
+
+        <Box display="flex" gap={1}>
+          <Button
+            variant="outlined"
+            sx={{
+              color: "#9947eb",
+              borderColor: "#9947eb",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                bgcolor: "#f3e8ff",
+                borderColor: "#7B2CBF",
+              },
             }}
-          >Regístrate</Button>
+            size="small"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Iniciar Sesión
+          </Button>
+          <Button
+            variant="contained"
+            size="small"
+            sx={{
+              background: "#9947eb",
+              transition: "transform 0.3s ease, background 0.3s ease",
+              "&:hover": {
+                transform: "translateY(-2px)",
+                background: "#7B2CBF",
+              },
+            }}
+            color="primary"
+            onClick={() => {
+              navigate("/registro");
+            }}
+          >
+            Regístrate
+          </Button>
         </Box>
       </Box>
-      <IconButton sx={{ display: { md: "none" } }}>
+
+      {/* Botón menú móvil */}
+      <IconButton
+        sx={{
+          display: { md: "none" },
+          transition: "transform 0.3s ease",
+          "&:hover": { transform: "scale(1.2)" },
+        }}
+      >
         <MenuIcon />
       </IconButton>
     </Box>

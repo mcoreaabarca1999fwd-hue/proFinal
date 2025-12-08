@@ -14,8 +14,8 @@ export default function PostCard({
   comments,
   avatar,
   liked,
-}) 
-{
+  verComentarios,
+}) {
   const formatTime = (time) => {
     const date = new Date(time);
     return date.toLocaleDateString() + " " + date.toLocaleTimeString();
@@ -92,8 +92,12 @@ export default function PostCard({
         }}
       >
         <Box sx={{ display: "flex", gap: 4 }}>
-          <Action icon={<FavoriteIcon />} label={likes} active={liked} />
-          <Action icon={<ChatBubbleIcon />} label={comments} />
+          <Action icon={<FavoriteIcon  sx={{
+            color:"#d33c70"
+          }} />} label={likes} active={liked} />
+          <div onClick={verComentarios}>
+            <Action icon={<ChatBubbleIcon />} label={comments} />
+          </div>
         </Box>
 
         <Action icon={<ShareIcon />} />

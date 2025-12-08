@@ -15,42 +15,35 @@ import {
 
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useState } from "react";
-
-// Ejemplo de datos (luego puedes pasarlos como props)
-// const [users, setUsers] = useState([]);
-
-// Hacer un useEffect para traer los usuarios desde el backend
-
-// El endpoint es el crear-usuario/ y el método es GET 
-const users = [
-  {
-    id: 1,
-    name: "Ana Torres",
-    email: "ana.torres@example.com",
-    role: "Admin",
-    status: "Activo",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-  },
-  {
-    id: 2,
-    name: "Carlos Méndez",
-    email: "carlos.mendez@example.com",
-    role: "Usuario",
-    status: "Inactivo",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-  },
-  {
-    id: 3,
-    name: "Laura Rojas",
-    email: "laura.rojas@example.com",
-    role: "Usuario",
-    status: "Activo",
-    avatar: "https://randomuser.me/api/portraits/women/65.jpg",
-  },
-];
+import { useEffect, useState } from "react";
+import { getData } from "../../../servicios/fetch";
 
 export default function UserTable() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const data = await getData(`usuarios/crear-usuario/${localStorage.getItem('idUsuario')}/`);
+        setUsers(data);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        
+        setUsers([
+          {
+            id: 1,
+            name: "Ana Torres",
+            email: "ana.torres@example.com",
+            role: "Admin",
+            status: "Activo",
+            avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+          },
+        ]);
+      }
+    };
+    fetchUsers();
+  }, []);
+
   const getStatusColor = (status) => {
     return status === "Activo" ? "success" : "default";
   };

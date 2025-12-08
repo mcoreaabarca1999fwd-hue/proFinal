@@ -3,8 +3,10 @@ import { Box, Typography, IconButton, Avatar } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
 import MenuIcon from "@mui/icons-material/Menu";
 import EmojiNatureIcon from "@mui/icons-material/EmojiNature";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
+  const navigate = useNavigate();
   return (
     <Box
       component="header"
@@ -28,6 +30,7 @@ export default function NavBar() {
       {/* Logo */}
       <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
         <Box
+        onClick={() => navigate('/about-us')}
           sx={{
             color: "#eb47b4",
             display: "flex",
@@ -39,8 +42,10 @@ export default function NavBar() {
         >
           <EmojiNatureIcon style={{ fontSize: 32 }} />
         </Box>
-        <Typography
+        <Typography 
+        onClick={() => navigate('/')}
           sx={{
+            cursor: "pointer",
             fontWeight: 700,
             fontSize: 18,
             color: "#181115",
@@ -61,7 +66,7 @@ export default function NavBar() {
         }}
       >
         <Box sx={{ display: "flex", gap: 3 }}>
-          <Typography
+          <Typography onClick={() => navigate('/admin-dashboard')}
             sx={{
               fontSize: 14,
               cursor: "pointer",
@@ -74,7 +79,8 @@ export default function NavBar() {
           >
             Dashboard
           </Typography>
-          <Typography
+          <Typography 
+            onClick={() => navigate('/calendario')}
             sx={{
               fontSize: 14,
               cursor: "pointer",
@@ -88,6 +94,7 @@ export default function NavBar() {
             Calendario
           </Typography>
           <Typography
+            onClick={() => navigate('/recursos')}
             sx={{
               fontSize: 14,
               cursor: "pointer",
@@ -101,6 +108,7 @@ export default function NavBar() {
             Articulos
           </Typography>
           <Typography
+            onClick={() => navigate('/foro')}
             sx={{
               fontSize: 14,
               cursor: "pointer",
@@ -117,20 +125,8 @@ export default function NavBar() {
 
         {/* Settings + Avatar */}
         <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-          <IconButton
-            size="small"
-            sx={{
-              bgcolor: "#f4eef2",
-              transition: "transform 0.3s ease, bgcolor 0.3s ease",
-              "&:hover": {
-                transform: "rotate(90deg)",
-                bgcolor: "#eb47b4",
-              },
-            }}
-          >
-            <SettingsIcon sx={{ color: "#88637c" }} />
-          </IconButton>
           <Avatar
+          onClick={() => navigate('/perfil')}
             alt="User"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-6-rlPe94LLHQR3vKwab7uprOml4-g741O7ysfNUZlYQEGOEAwNfW1eCLh4pgJMmNkT18P0Ur76tT0gQ0YVE7jSIKuK2V3lSdGUdqyYdN3o8xO0BEAB5rmyiN_b6r87BmhfA8odmGJdsCeqWcO4xB8qyjYIVYh92i5shPZQppiPFb-igOcAWUd-5gHG3t2MmojyvU35_9RtLjeGqyFPABYe5CGuKMTm8ZptGoJ9eIXe9fI-z2bPAP0iPo1-inJ9ulJXljXduOQpTt"
             sx={{

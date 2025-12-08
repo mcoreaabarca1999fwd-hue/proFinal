@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 import { getData, getDataAutenticado } from "../../servicios/fetch";
 import { Typography } from "@mui/material";
 import Footer from "../../componentes/homePage/Footer";
-
+import { useNavigate } from "react-router-dom";
 export default function ForoPage() {
+  const navigate = useNavigate();
   const [publicacions,setPublicaciones] = useState([])
 
   // se debe hacer un useEffect que consulte al get data las publicaciones
@@ -37,7 +38,7 @@ export default function ForoPage() {
                   No hay publicaciones aún. ¡Sé el primero en crear una!
                 </Typography>
               )}
-              {publicacions.map((publicacion)=>(
+              {publicacions.map((publicacion)=>(  
                 <PostCard
                   key={publicacion.id}
                   user={publicacion.nombre_usuario}
@@ -45,8 +46,12 @@ export default function ForoPage() {
                   title={publicacion.titulo}
                   text={publicacion.contenido}
                   tags={[`#${publicacion.etiquetaForo}`]}
-                  likes={0}
+                  likes={'∞'}
                   comments={0}
+                  verComentarios={()=>{
+                    localStorage.setItem('idPublicacion', publicacion.id)
+                    navigate('/comentarios')
+                  }}
                   avatar="https://lh3.googleusercontent.com/a/AGNmyxY5p3b0kC1NpOeG9rY0Y6f6s0dT7q8YcXW8v6g=s96-c"
                 />
               )
