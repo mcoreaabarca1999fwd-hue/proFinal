@@ -3,6 +3,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import GroupsIcon from "@mui/icons-material/Groups";
 import BookIcon from "@mui/icons-material/Book";
+import { keyframes } from "@mui/system";
 
 const features = [
   {
@@ -27,11 +28,17 @@ const features = [
   }
 ];
 
+// Animaciones
+const fadeUp = keyframes`
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
 export default function FeaturesSection() {
   return (
     <Box px={{ xs: 3, lg: 5 }} py={{ xs: 8, md: 12 }} bgcolor="background.paper">
       {/* Encabezado */}
-      <Box textAlign="center" mb={6}>
+      <Box textAlign="center" mb={6} sx={{ animation: `${fadeUp} 0.8s ease forwards` }}>
         <Typography variant="h4" fontWeight="bold" sx={{ color: "#333" }} gutterBottom>
           Funcionalidades diseñadas para ti
         </Typography>
@@ -46,7 +53,7 @@ export default function FeaturesSection() {
           <Grid item xs={12} sm={6} md={4} lg={3} key={idx}>
             <Box
               borderRadius={2}
-              p={2}
+              p={3}
               display="flex"
               flexDirection="column"
               alignItems="center"
@@ -56,10 +63,13 @@ export default function FeaturesSection() {
               maxWidth={280}
               mx="auto"
               sx={{
+                animation: `${fadeUp} 0.8s ease forwards`,
+                animationDelay: `${idx * 0.2}s`,
+                opacity: 0,
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
                 "&:hover": {
-                  transform: "translateY(-4px)",
-                  boxShadow: "0px 6px 16px rgba(0,0,0,0.12)"
+                  transform: "translateY(-6px) scale(1.03)",
+                  boxShadow: "0px 8px 20px rgba(0,0,0,0.15)"
                 }
               }}
             >
@@ -69,8 +79,12 @@ export default function FeaturesSection() {
                 justifyContent="center"
                 bgcolor="#F3E8FF"
                 borderRadius="50%"
-                width={56}
-                height={56}
+                width={64}
+                height={64}
+                sx={{
+                  transition: "transform 0.4s ease",
+                  "&:hover": { transform: "rotate(10deg) scale(1.1)" }
+                }}
               >
                 {f.icon}
               </Box>
