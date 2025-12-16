@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView,ListAPIView
+
 from .models import EtiquetaForo, Publicacion, Comentario,Reaccion
 from .serializers import EtiquetaSerializer, PublicacionSerializer, ComentarioSerializer,ReaccionSerializer
-from rest_framework.permissions import IsAuthenticated,BasePermission,SAFE_METHODS # Importamos la funcionalidad de restringir una vista
+from rest_framework.permissions import IsAuthenticated,BasePermission,SAFE_METHODS,IsAuthenticatedOrReadOnly # Importamos la funcionalidad de restringir una vista
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
-
+from rest_framework.generics import DestroyAPIView
+from .models import Publicacion
+from .serializers import PublicacionSerializer
 
 class EtiquetaCreateView(ListCreateAPIView):
     queryset = EtiquetaForo.objects.all()
@@ -12,7 +17,7 @@ class EtiquetaCreateView(ListCreateAPIView):
 
 # todas las publicaciones - para poder hacer el post
 class PublicacionCreateView(ListCreateAPIView):
-    permission_classes = [IsAuthenticated]  # Restringimos el acceso a usuarios autenticados (que iniciaron sesion)
+    permission_classes = [IsAuthenticatedOrReadOnly]  # Restringimos el acceso a usuarios autenticados (que iniciaron sesion)
     queryset = Publicacion.objects.all()
     serializer_class = PublicacionSerializer
 
@@ -38,3 +43,27 @@ class ComentarioCreateView(ListCreateAPIView):
 class ReaccionCreateView(ListCreateAPIView):
     queryset = Reaccion.objects.all()
     serializer_class = ReaccionSerializer
+
+
+class EliminarPublicacionView(DestroyAPIView):
+    queryset = Publicacion.objects.all()
+    serializer_class = PublicacionSerializer
+    # permission_classes = [IsAuthenticated]
+    lookup_field = 'id'
+
+
+class EditarPublicacionView(APIView):
+    def patch(self,request):
+        id_foro = request.data.get('id_foro')
+        titulo = request.data.get('titulo')
+        descripcion = request.data.get('descripcion')
+        etiqueta = request.data.get('etiqueta')
+        publicacion = Publicacion.objects.get(id=id_foro)
+        publicacion.titulo = titulo
+        publicacion.descripcion = descripcion
+        publicacion.etiqueta = etiqueta
+        publicacion.save()
+        
+        return Response({
+            'message': "Foro editado exitosamente"
+        })

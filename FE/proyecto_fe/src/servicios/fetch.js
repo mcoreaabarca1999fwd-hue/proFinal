@@ -67,7 +67,7 @@ async function getDataAutenticado(endpoint) {
 export { getDataAutenticado }
 async function deleteData(endpoint, id) {
     try {
-        const peticion = await fetch(`http://127.0.0.1:8000/${endpoint}/${id}`, {
+        const peticion = await fetch(`http://127.0.0.1:8000/${endpoint}/${id}/`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json'
@@ -82,20 +82,21 @@ async function deleteData(endpoint, id) {
 
 export { deleteData }
 
-async function patchData(endpoint, obj, id) {
-    try {
-        const peticion = await fetch(`http://127.0.0.1:8000/${endpoint}/${id}`, {
-            method: "PATCH",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(obj)
-        })
-        const respuesta = await peticion.json()
-        return respuesta
-    } catch (error) {
-        console.error(error);
-    }
+async function patchData(endpoint, obj) {
+  try {
+    const peticion = await fetch(`http://127.0.0.1:8000/${endpoint}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+
+    const respuesta = await peticion.json();
+    return respuesta;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-export { patchData }
+export { patchData };

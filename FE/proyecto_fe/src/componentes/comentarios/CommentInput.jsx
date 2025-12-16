@@ -15,7 +15,7 @@ export default function CommentInput() {
 
         <Button
           variant="contained"
-          sx={{ mt: 1, ml: "auto", display: "block", borderRadius: 10 }}
+          sx={{ backgroundColor: "#8a3dda", mt: 1, ml: "auto", display: "block", borderRadius: 10 }}
         >
           Comentar
         </Button>

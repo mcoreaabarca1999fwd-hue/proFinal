@@ -64,7 +64,7 @@ export default function Main() {
             ¿Cómo registro mi estado de ánimo?
           </AccordionSummary>
           <AccordionDetails>
-            Para registrar tu estado de ánimo, ve a la pantalla principal...
+            Para registrar tu estado de ánimo, ve a tu calendario y ...
           </AccordionDetails>
         </Accordion>
 

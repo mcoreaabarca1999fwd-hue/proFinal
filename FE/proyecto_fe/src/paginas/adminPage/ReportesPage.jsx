@@ -1,60 +1,117 @@
-import { Box, Grid } from "@mui/material";
-
-// Componentes que creamos
+import { Box, Typography } from "@mui/material";
 import Sidebar from "../../componentes/admin/Sidebar";
-import HeaderSection from "../../componentes/admin/analiticas/HeaderSection";
-import ReportControls from "../../componentes/admin/analiticas/ReportControls";
-import DAUChart from "../../componentes/admin/analiticas/DAUChart";
-import StatCard from "../../componentes/admin/analiticas/StatCard";
-import MetricsTable from "../../componentes/admin/analiticas/MetricsTable";
+import FiltersBar from "../../componentes/admin/moderacion/FiltersBar";
+import ReportTable from "../../componentes/admin/moderacion/ReportTable";
+import ModalEditarPublicacion from "../../componentes/admin/moderacion/ModalEditarPublicacion";
+import { useState, useMemo, useEffect } from "react";
+import { getData } from "../../servicios/fetch";
 
 export default function ReportesPage() {
-  const statsData = [
-    { title: "Nuevas Usuarias", value: "1,254", icon: "group", color: "#FADADD" },
-    { title: "Publicaciones en Foro", value: "876", icon: "forum", color: "#C3B1E1" },
-  ];
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("Todos los reportes");
+  const [page, setPage] = useState(1);
+  const perPage = 10;
 
-  const metricsData = [
-    { metric: "Usuarias Activas Mensuales (MAU)", value: "15,840", change: "+5.2%", trend: "Positiva" },
-    { metric: "Tasa de Retención (Mes 1)", value: "42%", change: "-1.5%", trend: "Negativa" },
-    { metric: "Artículos Educativos Leídos", value: "25,123", change: "+12.8%", trend: "Muy Positiva" },
-    { metric: "Duración Promedio del Ciclo Registrado", value: "28.5 días", change: "+0.1 días", trend: "Estable" },
-  ];
+  const [foro, setForo] = useState([]);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  useEffect(() => {
+    async function traerForo() {
+      const peticion = await getData("foro/publicacion/");
+      setForo(peticion || []);
+    }
+    traerForo();
+  }, []);
+
+  /** 🔹 Mapeo para la tabla */
+  const mappedForo = useMemo(() => {
+    return foro.map((item, index) => ({
+      id: item.id || index + 1,
+      content: item.contenido,
+      subtitle: `Etiquetas '${item.etiquetaForo || ""}'`,
+      user: item.nombre_usuario || "Usuario desconocido",
+      avatar: item.Usuario?.avatar || "https://i.pravatar.cc/48",
+      reason: item.titulo,
+      date: item.fecha_creacion?.split("T")[0],
+      status: "Pendiente",
+    }));
+  }, [foro]);
+
+  const filtered = useMemo(() => {
+    let arr = [...mappedForo];
+    if (search) {
+      const s = search.toLowerCase();
+      arr = arr.filter((r) =>
+        (r.content + r.user + r.reason).toLowerCase().includes(s)
+      );
+    }
+    return arr;
+  }, [search, mappedForo]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+  const pageData = filtered.slice((page - 1) * perPage, page * perPage);
+
+  /** 🖊️ Click en editar */
+  const handleAction = (item, action) => {
+    if (action === "edit") {
+      setSelectedItem(item);
+      setOpenEdit(true);
+    }
+  };
+
+  /** 💾 Guardar cambios del modal */
+  const handleSaveEdit = (updatedItem) => {
+    setForo((prev) =>
+      prev.map((item) =>
+        item.id === updatedItem.id
+          ? {
+              ...item,
+              titulo: updatedItem.title,
+              contenido: updatedItem.content,
+              etiquetaForo: updatedItem.tags.join(", "),
+            }
+          : item
+      )
+    );
+
+    setOpenEdit(false);
+    setSelectedItem(null);
+  };
 
   return (
-    <Box display="flex" minHeight="100vh" bgcolor="#f8f6f8">
-      {/* Sidebar */}
+    <Box sx={{ display: "flex", minHeight: "100vh" }}>
       <Sidebar />
 
-      {/* Contenido principal */}
-      <Box flex={1} p={4}>
-        {/* Header */}
-        <HeaderSection />
+      <Box component="main" sx={{ flex: 1, p: 4 }}>
+        <Typography variant="h4" fontWeight={800}>
+          Contenido del Foro
+        </Typography>
 
-        {/* Controles de reporte */}
-        <ReportControls />
+        <FiltersBar
+          value={search}
+          onSearch={setSearch}
+          filter={filter}
+          onFilter={setFilter}
+        />
 
-        {/* Gráfico y estadísticas */}
-        <Grid container spacing={3}>
-          <Grid item xs={12} lg={8}>
-            <DAUChart />
-          </Grid>
-          <Grid item xs={12} lg={4}>
-            <Grid container spacing={3}>
-              {statsData.map((stat, idx) => (
-                <Grid item xs={12} key={idx}>
-                  <StatCard title={stat.title} value={stat.value} icon={stat.icon} color={stat.color} />
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
-        </Grid>
-
-        {/* Tabla de métricas */}
-        <Box mt={4}>
-          <MetricsTable data={metricsData} />
-        </Box>
+        <ReportTable
+          data={pageData}
+          page={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
+          onAction={handleAction}
+        />
       </Box>
+
+      {selectedItem && (
+        <ModalEditarPublicacion
+          open={openEdit}
+          initialData={selectedItem}
+          onClose={() => setOpenEdit(false)}
+          onSave={handleSaveEdit}
+        />
+      )}
     </Box>
   );
 }

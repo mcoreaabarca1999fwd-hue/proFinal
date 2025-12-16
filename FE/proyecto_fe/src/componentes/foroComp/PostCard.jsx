@@ -25,7 +25,7 @@ export default function PostCard({
       sx={{
         bgcolor: "#fff",
         border: "1px solid #e5e7eb",
-        width: "300%",
+        width: "200%",
         p: 4,
         borderRadius: 3,
         display: "flex",
@@ -93,7 +93,7 @@ export default function PostCard({
       >
         <Box sx={{ display: "flex", gap: 4 }}>
           <Action icon={<FavoriteIcon  sx={{
-            color:"#d33c70"
+            color:"#9946ec"
           }} />} label={likes} active={liked} />
           <div onClick={verComentarios}>
             <Action icon={<ChatBubbleIcon />} label={comments} />
@@ -109,7 +109,7 @@ export default function PostCard({
 function Action({ icon, label, active }) {
   return (
     <Box sx={{ display: "flex", alignItems: "center", gap: 1, cursor: "pointer" }}>
-      <Box sx={{ color: active ? "#eb477e" : "#555" }}>{icon}</Box>
+      <Box sx={{ color: active ? "#9947eb" : "#555" }}>{icon}</Box>
       {label && <Typography fontSize={14}>{label}</Typography>}
     </Box>
   );

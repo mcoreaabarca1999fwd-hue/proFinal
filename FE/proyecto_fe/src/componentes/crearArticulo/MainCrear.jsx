@@ -34,7 +34,7 @@ export default function Main() {
         <Box sx={{ mb: 4 }}>
           <Button
             startIcon={<ArrowBackIcon />}
-            sx={{ fontWeight: "bold", color: "#eb47b4" }}
+            sx={{ fontWeight: "bold", color: "#8a3dda" }}
           >
             Volver a Artículos
           </Button>
@@ -233,5 +233,5 @@ const chip = {
 const chipActive = {
   ...chip,
   background: "rgba(235, 71, 180, 0.2)",
-  color: "#eb47b4",
+  color: "#8a3dda",
 };

@@ -16,7 +16,7 @@ export default function TopNavBar() {
       alignItems="center"
       px={{ xs: 3, lg: 10 }}
       py={1.5}
-      borderBottom="1px solid #efe7ec"
+      borderBottom="1px solid #E6B4D6"
       bgcolor="#ffffff"
       backdropFilter="blur(6px)"
       sx={{

@@ -8,6 +8,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import { useNavigate } from "react-router-dom";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function Sidebar() {
   const navigate = useNavigate();
@@ -26,13 +27,15 @@ export default function Sidebar() {
       <Box display="flex" alignItems="center" gap={2} mb={4}>
         <AutorenewIcon sx={{ color: "#c319e6" }} />
         <Box>
-          <Typography fontWeight="bold">CycleTrack</Typography>
+          <Typography fontWeight="bold">AlmaFloral</Typography>
           <Typography variant="body2" color="gray">Panel de Control</Typography>
         </Box>
       </Box>
 
       <List sx={{ flexGrow: 1 }}>
-        <ListItemButton selected>
+        <ListItemButton onClick={()=>{
+                navigate('/admin-dashboard')
+              }}>
           <ListItemIcon><DashboardIcon color="primary" /></ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItemButton>
@@ -51,32 +54,27 @@ export default function Sidebar() {
           <ListItemText primary="Moderación de Foro" />
         </ListItemButton>
 
-        <ListItemButton
-        onClick={()=>{
-                navigate('/admin-reportes')
-              }}
-        >
-          <ListItemIcon><ArticleIcon /></ListItemIcon>
-          <ListItemText primary="Gestión de Contenido" />
-        </ListItemButton>
+        
 
-        <ListItemButton
-        onClick={()=>{
-                navigate('/admin-reportes')
-              }}
-        >
-          <ListItemIcon><FlagIcon /></ListItemIcon>
-          <ListItemText primary="Reportes" />
-        </ListItemButton>
+        
+          
       </List>
 
       <List>
-        <ListItemButton>
-          <ListItemIcon><SettingsIcon /></ListItemIcon>
-          <ListItemText primary="Configuración" />
+        <ListItemButton
+        onClick={()=>{
+                navigate('/perfil')
+              }}
+        >
+          <ListItemIcon><AccountCircleIcon /></ListItemIcon>
+          <ListItemText primary="Usuario" />
         </ListItemButton>
 
-        <ListItemButton>
+        <ListItemButton
+        onClick={()=>{
+                navigate('/')
+              }}
+        >
           <ListItemIcon><LogoutIcon /></ListItemIcon>
           <ListItemText primary="Cerrar Sesión" />
         </ListItemButton>

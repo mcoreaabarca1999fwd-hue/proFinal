@@ -27,8 +27,8 @@ export default function LeftSidebar() {
           fullWidth
           variant="contained"
           sx={{
-            bgcolor: "#eb477e",
-            "&:hover": { bgcolor: "#d33c70" },
+            bgcolor: "#9946ec",
+            "&:hover": { bgcolor: "#9946ec" },
             height: 48,
             borderRadius: 2,
             fontWeight: "700",

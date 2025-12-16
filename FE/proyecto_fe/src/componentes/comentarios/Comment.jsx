@@ -25,15 +25,9 @@ export default function Comment() {
         </Box>
 
         <Stack direction="row" spacing={2} mt={1} ml={1}>
-          <Button
-            size="small"
-            startIcon={<FavoriteBorderIcon />}
-            sx={{ textTransform: "none" }}
-          >
-            5 Me gusta
-          </Button>
+         
 
-          <Button size="small" sx={{ textTransform: "none" }}>
+          <Button size="small" sx={{ color: "#8a3dda", textTransform: "none" }}>
             Responder
           </Button>
         </Stack>

@@ -1,7 +1,10 @@
 import { Box, Typography, Button } from "@mui/material";
+import { useState } from "react";
 import DownloadIcon from "@mui/icons-material/Download";
+import ModalDiario from "./RegistroDiario"
 
 export default function StatsReport() {
+  const [abrirModal, setAbrirModal] = useState(false);
   return (
     <Box sx={{
       width: "125%",
@@ -15,12 +18,18 @@ export default function StatsReport() {
         <Typography variant="h6" fontWeight="bold">Estadísticas y Reportes del Ciclo</Typography>
         
         <Button
+          
           variant="contained"
           startIcon={<DownloadIcon />}
-          sx={{ bgcolor: "var(--primary-dark)" }}
+          sx={{ bgcolor: "#8a3dda" }}
+          onClick={() => setAbrirModal(true)}
         >
-          Generar Reporte
+          Agregar síntomas
         </Button>
+
+        {abrirModal && (
+                <ModalDiario open={abrirModal} onClose={() => setAbrirModal(false)} />
+              )}
       </Box>
 
       {/* Tarjetas */}

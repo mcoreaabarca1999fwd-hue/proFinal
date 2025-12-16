@@ -1,8 +1,10 @@
 import { Box, TextField, InputAdornment, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-
+import CreateUserModal from "../CreateUserModal";
+import { useState } from "react";
 export default function SearchBar() {
+    const [modalCrearUsuarioOpen, setModalCrearUsuarioOpen] = useState(false);
   return (
     <Box
       sx={{
@@ -40,9 +42,14 @@ export default function SearchBar() {
           fontWeight: 500,
           px: 3,
         }}
+        onClick={() => setModalCrearUsuarioOpen(true)}
       >
         Agregar Usuario
       </Button>
+
+      {modalCrearUsuarioOpen &&(
+        <CreateUserModal open={modalCrearUsuarioOpen} onClose={() => setModalCrearUsuarioOpen(false)} />
+      )}
     </Box>
   );
 }

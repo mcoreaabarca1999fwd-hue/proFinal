@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Typography, IconButton, Avatar } from "@mui/material";
-import SettingsIcon from "@mui/icons-material/Settings";
-import MenuIcon from "@mui/icons-material/Menu";
+import { Box, Typography, IconButton, Avatar, Icon } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
+import Face2Icon from '@mui/icons-material/Face2';
 import EmojiNatureIcon from "@mui/icons-material/EmojiNature";
 import { useNavigate } from "react-router-dom";
 
@@ -32,25 +32,26 @@ export default function NavBar() {
         <Box
         onClick={() => navigate('/about-us')}
           sx={{
-            color: "#eb47b4",
+            color: "#9946ec",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             transition: "transform 0.3s ease",
             "&:hover": { transform: "rotate(15deg) scale(1.1)" },
+            
           }}
         >
           <EmojiNatureIcon style={{ fontSize: 32 }} />
         </Box>
         <Typography 
-        onClick={() => navigate('/')}
+        onClick={() => navigate('/')}        
           sx={{
             cursor: "pointer",
             fontWeight: 700,
-            fontSize: 18,
-            color: "#181115",
+            fontSize: 20,
+            color: "#9946ec",
             transition: "color 0.3s ease",
-            "&:hover": { color: "#eb47b4" },
+            "&:hover": { color: "#7B2CBF" },
           }}
         >
           AlmaFloral
@@ -69,12 +70,24 @@ export default function NavBar() {
           <Typography onClick={() => navigate('/admin-dashboard')}
             sx={{
               fontSize: 14,
+              color: "#333",
               cursor: "pointer",
-              transition: "color 0.3s ease, transform 0.3s ease",
-              "&:hover": {
-                color: "#eb47b4",
-                transform: "translateY(-2px)",
-              },
+              position: "relative",
+              transition: "color 0.3s ease",
+              "&:hover": {color: "#9946ec",},
+              "&:after": {
+                  content: '""',
+                  position: "absolute",
+                  bottom: -4,
+                  left: 0,
+                  width: "0%",
+                  height: "2px",
+                  bgcolor: "#9946ec",
+                  transition: "width 0.3s ease",
+                },
+                "&:hover:after": {
+                  width: "100%",
+                },
             }}
           >
             Dashboard
@@ -83,12 +96,24 @@ export default function NavBar() {
             onClick={() => navigate('/calendario')}
             sx={{
               fontSize: 14,
+              color: "#333",
               cursor: "pointer",
-              transition: "color 0.3s ease, transform 0.3s ease",
-              "&:hover": {
-                color: "#eb47b4",
-                transform: "translateY(-2px)",
-              },
+              position: "relative",
+              transition: "color 0.3s ease",
+              "&:hover": {color: "#9946ec",},
+              "&:after": {
+                  content: '""',
+                  position: "absolute",
+                  bottom: -4,
+                  left: 0,
+                  width: "0%",
+                  height: "2px",
+                  bgcolor: "#9946ec",
+                  transition: "width 0.3s ease",
+                },
+                "&:hover:after": {
+                  width: "100%",
+                },
             }}
           >
             Calendario
@@ -97,12 +122,24 @@ export default function NavBar() {
             onClick={() => navigate('/recursos')}
             sx={{
               fontSize: 14,
+              color: "#333",
               cursor: "pointer",
-              transition: "color 0.3s ease, transform 0.3s ease",
-              "&:hover": {
-                color: "#eb47b4",
-                transform: "translateY(-2px)",
-              },
+              position: "relative",
+              transition: "color 0.3s ease",
+              "&:hover": {color: "#9946ec",},
+              "&:after": {
+                  content: '""',
+                  position: "absolute",
+                  bottom: -4,
+                  left: 0,
+                  width: "0%",
+                  height: "2px",
+                  bgcolor: "#9946ec",
+                  transition: "width 0.3s ease",
+                },
+                "&:hover:after": {
+                  width: "100%",
+                },
             }}
           >
             Articulos
@@ -110,33 +147,70 @@ export default function NavBar() {
           <Typography
             onClick={() => navigate('/foro')}
             sx={{
-              fontSize: 14,
+            fontSize: 14,
+              color: "#333",
               cursor: "pointer",
-              transition: "color 0.3s ease, transform 0.3s ease",
-              "&:hover": {
-                color: "#eb47b4",
-                transform: "translateY(-2px)",
-              },
+              position: "relative",
+              transition: "color 0.3s ease",
+              "&:hover": {color: "#9946ec",},
+              "&:after": {
+                  content: '""',
+                  position: "absolute",
+                  bottom: -4,
+                  left: 0,
+                  width: "0%",
+                  height: "2px",
+                  bgcolor: "#9946ec",
+                  transition: "width 0.3s ease",
+                },
+                "&:hover:after": {
+                  width: "100%",
+                },
             }}
           >
             Comunidad
           </Typography>
         </Box>
 
-        {/* Settings + Avatar */}
+        {/* Settings + Avatar + Logout */}
         <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
           <Avatar
-          onClick={() => navigate('/perfil')}
-            alt="User"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-6-rlPe94LLHQR3vKwab7uprOml4-g741O7ysfNUZlYQEGOEAwNfW1eCLh4pgJMmNkT18P0Ur76tT0gQ0YVE7jSIKuK2V3lSdGUdqyYdN3o8xO0BEAB5rmyiN_b6r87BmhfA8odmGJdsCeqWcO4xB8qyjYIVYh92i5shPZQppiPFb-igOcAWUd-5gHG3t2MmojyvU35_9RtLjeGqyFPABYe5CGuKMTm8ZptGoJ9eIXe9fI-z2bPAP0iPo1-inJ9ulJXljXduOQpTt"
+           onClick={() => navigate('/perfil')} 
             sx={{
-              width: 40,
-              height: 40,
+            fontSize: 14,
+              color: "#9946ec",
               cursor: "pointer",
-              transition: "transform 0.3s ease",
-              "&:hover": { transform: "scale(1.1)" },
+              position: "relative",
+              transition: "color 0.3s ease",
+              "&:hover": {color: "#7B2CBF",},
+              "&:after": {
+                  content: '""',
+                  position: "absolute",
+                  bottom: -4,
+                  left: 0,
+                  width: "0%",
+                  height: "2px",
+                  bgcolor: "#9946ec",
+                  transition: "width 0.3s ease",
+                },
+                "&:hover:after": {
+                  width: "100%",
+                },
             }}
           />
+          <IconButton 
+            onClick={() => navigate('/')}
+            sx={{
+              color: "#9946ec",
+              transition: "color 0.3s ease",
+              "&:hover": { 
+                color: "#7B2CBF",
+                backgroundColor: "rgba(153, 70, 235, 0.1)"
+              },
+            }}
+          >
+            <LogoutIcon />
+          </IconButton>
         </Box>
       </Box>
 
@@ -144,12 +218,25 @@ export default function NavBar() {
       <Box sx={{ display: { xs: "block", md: "none" } }}>
         <IconButton
           sx={{
+            backgroundColor:"#9946ec",
             transition: "transform 0.3s ease",
             "&:hover": { transform: "scale(1.2)" },
           }}
         >
-          <MenuIcon />
+          <Face2Icon />
         </IconButton>
+
+        
+        <IconButton 
+        onClick={()=>{
+                navigate('/')
+              }}
+        >
+          <LogoutIcon sx={{color:"#9947eb"}} />
+        </IconButton>
+          
+        
+      
       </Box>
     </Box>
   );

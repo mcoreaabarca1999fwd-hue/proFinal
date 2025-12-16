@@ -7,22 +7,22 @@ import { keyframes } from "@mui/system";
 
 const features = [
   {
-    icon: <CalendarMonthIcon fontSize="large" sx={{ color: "#7B2CBF" }} />,
+    icon: <CalendarMonthIcon fontSize="large" sx={{ color: "#c8a2c8" }} />,
     title: "Seguimiento Inteligente",
     desc: "Registra tus síntomas y predice tus próximas menstruaciones y periodos de ovulación con precisión."
   },
   {
-    icon: <FavoriteIcon fontSize="large" sx={{ color: "#7B2CBF" }} />,
+    icon: <FavoriteIcon fontSize="large" sx={{ color: "#c8a2c8" }} />,
     title: "Consejos Personalizados",
     desc: "Recibe recomendaciones de nutrición, ejercicio y bienestar adaptadas a tu fase del ciclo actual."
   },
   {
-    icon: <GroupsIcon fontSize="large" sx={{ color: "#7B2CBF" }} />,
+    icon: <GroupsIcon fontSize="large" sx={{ color: "#c8a2c8" }} />,
     title: "Comunidad de Apoyo",
     desc: "Únete a nuestro foro seguro para compartir experiencias, hacer preguntas y conectar con otras usuarias."
   },
   {
-    icon: <BookIcon fontSize="large" sx={{ color: "#7B2CBF" }} />,
+    icon: <BookIcon fontSize="large" sx={{ color: "#c8a2c8" }} />,
     title: "Recursos Educativos",
     desc: "Accede a artículos y guías creados por expertos en salud femenina para resolver todas tus dudas."
   }
@@ -77,7 +77,7 @@ export default function FeaturesSection() {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                bgcolor="#F3E8FF"
+                bgcolor="#fdf7fc"
                 borderRadius="50%"
                 width={64}
                 height={64}

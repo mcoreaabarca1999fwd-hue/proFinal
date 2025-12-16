@@ -4,6 +4,7 @@ from .models import Publicacion
 from .models import Comentario
 from .models import Reaccion
 from rest_framework import serializers
+
 class EtiquetaSerializer(ModelSerializer):
     class Meta: 
         model = EtiquetaForo
@@ -19,6 +20,7 @@ class ComentarioSerializer(ModelSerializer):
     class Meta:
         model = Comentario
         fields = "__all__"
+        
 class ReaccionSerializer(ModelSerializer):
     class Meta:
         model = Reaccion

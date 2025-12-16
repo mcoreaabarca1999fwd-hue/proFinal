@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Box, Button } from "@mui/material";
+import { Card, Typography, Box, Button, Paper } from "@mui/material";
 
 export default function ModerationList() {
   const reports = [
@@ -8,21 +8,74 @@ export default function ModerationList() {
   ];
 
   return (
-    <Card sx={{ p: 2 }}>
-      <Typography variant="h6" mb={2}>Moderación de Contenido</Typography>
+    <Card
+      sx={{
+        p: 3,
+        borderRadius: 3,
+        boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
+      }}
+    >
+      <Typography
+        variant="h6"
+        fontWeight="bold"
+        mb={3}
+        sx={{ color: "var(--primary-dark)" }}
+      >
+        Moderación de Contenido
+      </Typography>
 
       {reports.map((r, i) => (
-        <Box key={i} py={2} borderBottom="1px solid #eee">
-          <Typography fontWeight="bold">{r.text}</Typography>
-          <Typography variant="body2" color="gray">
-            Reportado por <strong>{r.user}</strong> por '{r.reason}'.
+        <Paper
+          key={i}
+          elevation={1}
+          sx={{
+            p: 2,
+            mb: 2,
+            borderRadius: 2,
+            transition: "all 0.3s ease",
+            "&:hover": {
+              transform: "translateY(-2px)",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
+              bgcolor: "#fafafa",
+            },
+          }}
+        >
+          <Typography fontWeight="bold" sx={{ color: "#181115", mb: 0.5 }}>
+            {r.text}
+          </Typography>
+          <Typography variant="body2" color="text.secondary" mb={1}>
+            Reportado por <strong>{r.user}</strong> por <em>{r.reason}</em>.
           </Typography>
 
-          <Box mt={1} display="flex" gap={1}>
-            <Button size="small" color="success">Aprobar</Button>
-            <Button size="small" color="error">Eliminar</Button>
+          <Box display="flex" gap={1}>
+            <Button
+              size="small"
+              variant="contained"
+              color="success"
+              sx={{
+                textTransform: "none",
+                borderRadius: 2,
+                px: 2,
+                "&:hover": { bgcolor: "#2e7d32" },
+              }}
+            >
+              Aprobar
+            </Button>
+            <Button
+              size="small"
+              variant="contained"
+              color="error"
+              sx={{
+                textTransform: "none",
+                borderRadius: 2,
+                px: 2,
+                "&:hover": { bgcolor: "#c62828" },
+              }}
+            >
+              Eliminar
+            </Button>
           </Box>
-        </Box>
+        </Paper>
       ))}
     </Card>
   );

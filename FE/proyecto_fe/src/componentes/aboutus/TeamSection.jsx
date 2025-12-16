@@ -1,15 +1,20 @@
 import { Box, Typography, Grow, Grid, Avatar, Paper } from "@mui/material";
 
 const team = [
-  { name: "María López", role: "CEO", img: "/images/person1.jpg" },
-  { name: "Carlos Ruiz", role: "CTO", img: "/images/person2.jpg" },
-  { name: "Ana Gómez", role: "Diseñadora", img: "/images/person3.jpg" },
+  { name: "Molishka Corea", role: "CEO", img: "/images/person1.jpg" },
+  { name: "Ana Gómez", role: "CTO", img: "/images/person2.jpg" },
 ];
 
 export default function TeamSection() {
   return (
-    <Box sx={{ py: 8, px: 3 }}>
-      <Typography variant="h4" fontWeight="bold" textAlign="center" mb={5}>
+    <Box sx={{ py: 8, px: 3, bgcolor: "#fafafa" }}>
+      <Typography
+        variant="h4"
+        fontWeight="bold"
+        textAlign="center"
+        mb={5}
+        sx={{ color: "var(--primary-dark)" }}
+      >
         Nuestro Equipo
       </Typography>
 
@@ -22,16 +27,32 @@ export default function TeamSection() {
                 sx={{
                   textAlign: "center",
                   borderRadius: 4,
-                  p: 3,
+                  p: 4,
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-6px)",
+                    boxShadow: "0 10px 24px rgba(0,0,0,0.15)",
+                    bgcolor: "#fff",
+                  },
                 }}
               >
                 <Avatar
                   src={person.img}
                   alt={person.name}
-                  sx={{ width: 120, height: 120, mx: "auto", mb: 2 }}
+                  sx={{
+                    width: 120,
+                    height: 120,
+                    mx: "auto",
+                    mb: 2,
+                    border: "4px solid var(--soft-blush)",
+                    transition: "transform 0.3s ease",
+                    "&:hover": { transform: "scale(1.08)" },
+                  }}
                 />
-                <Typography variant="h6">{person.name}</Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="h6" fontWeight="bold" sx={{ color: "#181115" }}>
+                  {person.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
                   {person.role}
                 </Typography>
               </Paper>

@@ -22,6 +22,7 @@ export default function CreateAccountForm() {
   const [password, setPassword] = useState("");
   const [birth_date, setBirth_date] = useState("");
   const [confirm_password, setConfirm_password] = useState("");
+  const [cedula_profesional, setCedula_profesional] = useState("");
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [showPass2, setShowPass2] = useState(false);
@@ -124,6 +125,19 @@ export default function CreateAccountForm() {
                   onChange={(e) => setLast_name(e.target.value)}
                   fullWidth
                   placeholder="Ingresa tu apellido"
+                  InputProps={{ sx: { height: 56 } }}
+                />
+              </Box>
+                {/* Cedula Profesional */}
+              <Box sx={{ flex: 1 }}>
+                <Typography mb={1} sx={{ fontWeight: 500, color: "#333" }}>
+                  ID Profesional
+                </Typography>
+                <TextField
+                  value={cedula_profesional}
+                  onChange={(e) => setCedula_profesional(e.target.value)}
+                  fullWidth
+                  placeholder="Cédula profesional"
                   InputProps={{ sx: { height: 56 } }}
                 />
               </Box>

@@ -18,15 +18,15 @@ export default function Footer() {
         </Box>
         <Box>
           <Typography fontWeight="bold" mb={1}>Empresa</Typography>
-          <Link href="#" display="block" color="text.secondary">Sobre Nosotros</Link>
+          <Link href="/about-us" display="block" color="text.secondary">Sobre Nosotros</Link>
           <Link href="/recursos" display="block" color="text.secondary">Artículos</Link>
-          <Link href="/registro" display="block" color="text.secondary">Quisieras colaborar como profesional?</Link>
+          <Link href="/registro-pro" display="block" color="text.secondary">Quisieras colaborar como profesional?</Link>
         </Box>
         <Box>
           <Typography fontWeight="bold" mb={1}>Legal</Typography>
           <Link href="#" display="block" color="text.secondary">Términos de Servicio</Link>
           <Link href="#" display="block" color="text.secondary">Política de Privacidad</Link>
-          <Link href="#" display="block" color="text.secondary">Cookies</Link>
+          <Link href="/crear-articulo" display="block" color="text.secondary">Crear Artículo</Link>
         </Box>
       </Box>
       <Typography textAlign="center" variant="body2" color="text.secondary" mt={4}>

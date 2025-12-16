@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Box } from "@mui/material";
+import { Card, Typography, Box, Paper } from "@mui/material";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import FlagIcon from "@mui/icons-material/Flag";
@@ -13,27 +13,65 @@ export default function RecentActivity() {
   ];
 
   return (
-    <Card sx={{ p: 2 }}>
-      <Typography variant="h6" mb={2}>Actividad Reciente</Typography>
+    <Card
+      sx={{
+        p: 3,
+        borderRadius: 3,
+        boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
+      }}
+    >
+      <Typography
+        variant="h6"
+        fontWeight="bold"
+        mb={3}
+        sx={{ color: "var(--primary-dark)" }}
+      >
+        Actividad Reciente
+      </Typography>
 
       {items.map((i, index) => (
-        <Box key={index} display="flex" gap={2} mb={2}>
-          <Box sx={{
-            width: 40,
-            height: 40,
-            bgcolor: i.color + "33",
-            borderRadius: "50%",
+        <Paper
+          key={index}
+          elevation={0}
+          sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center"
-          }}>
+            gap: 2,
+            p: 2,
+            mb: 2,
+            borderRadius: 2,
+            transition: "all 0.3s ease",
+            "&:hover": {
+              transform: "translateY(-2px)",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
+              bgcolor: "#fafafa",
+            },
+          }}
+        >
+          <Box
+            sx={{
+              width: 44,
+              height: 44,
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              bgcolor: `${i.color}22`,
+              color: i.color,
+              fontSize: 22,
+            }}
+          >
             {i.icon}
           </Box>
           <Box>
-            <Typography>{i.text}</Typography>
-            <Typography variant="caption" color="gray">{i.time}</Typography>
+            <Typography fontWeight="bold" sx={{ color: "#181115" }}>
+              {i.text}
+            </Typography>
+            <Typography variant="caption" color="text.secondary">
+              {i.time}
+            </Typography>
           </Box>
-        </Box>
+        </Paper>
       ))}
     </Card>
   );

@@ -52,23 +52,7 @@ export default function PostCard({usuario,fechaPublicacion,titulo,descripcion,ta
         </Stack>
 
         {/* ACCIONES */}
-        <Box display="flex" alignItems="center" justifyContent="space-between" mt={3}>
-          <Stack direction="row" spacing={2} alignItems="center">
-            <IconButton>
-              <FavoriteIcon color="primary" />
-            </IconButton>
-            <Typography>0</Typography>
-
-            <IconButton>
-              <ChatBubbleOutlineIcon />
-            </IconButton> 
-            <Typography>0</Typography>
-          </Stack>
-
-          <IconButton>
-            <ShareIcon />
-          </IconButton>
-        </Box>
+        
 
         <Divider sx={{ my: 3 }} />
 

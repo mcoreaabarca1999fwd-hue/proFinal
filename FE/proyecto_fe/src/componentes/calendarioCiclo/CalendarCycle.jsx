@@ -115,10 +115,12 @@ export default function CalendarCycle() {
 
       <Button
         variant="contained"
-        sx={{ mt: 3 }}
+        sx={{ 
+          backgroundColor: "#8a3dda",
+          mt: 3 }}
         onClick={() => setAbrirModal(true)}
       >
-        Modal
+        Añadir Período
       </Button>
 
       {abrirModal && (

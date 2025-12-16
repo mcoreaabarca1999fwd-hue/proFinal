@@ -21,8 +21,8 @@ export default function UsersPage() {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
-          ml: { xs: 0, sm: "250px" }, // espacio por el sidebar
+          p: 2,
+          ml: { xs: 0, sm: "10px" }, // espacio por el sidebar
         }}
       >
         {/* HEADER */}
