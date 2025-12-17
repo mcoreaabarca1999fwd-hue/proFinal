@@ -19,27 +19,34 @@ export default function PostCard({
   const formatTime = (time) => {
     const date = new Date(time);
     return date.toLocaleDateString() + " " + date.toLocaleTimeString();
-  }
+  };
+
   return (
     <Box
       sx={{
         bgcolor: "#fff",
         border: "1px solid #e5e7eb",
-        width: "200%",
+        width: "100%",
         p: 4,
         borderRadius: 3,
         display: "flex",
         flexDirection: "column",
         gap: 2,
+        boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+        transition: "all 0.3s ease",
+        "&:hover": {
+          boxShadow: "0 6px 16px rgba(0,0,0,0.1)",
+          transform: "translateY(-2px)",
+        },
       }}
     >
       {/* Usuario */}
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-          <Avatar src={avatar} />
+          <Avatar src={avatar} sx={{ width: 48, height: 48 }} />
 
           <Box>
-            <Typography fontSize={14} fontWeight={700}>
+            <Typography fontSize={15} fontWeight={700} color="#333">
               {user}
             </Typography>
             <Typography fontSize={12} color="#88636f">
@@ -48,18 +55,18 @@ export default function PostCard({
           </Box>
         </Box>
 
-        <IconButton>
+        <IconButton sx={{ "&:hover": { bgcolor: "#f3f0f9" } }}>
           <MoreHorizIcon />
         </IconButton>
       </Box>
 
       {/* Contenido */}
       <Box>
-        <Typography fontSize={20} fontWeight={700} mb={1}>
+        <Typography fontSize={22} fontWeight={700} mb={1} color="#222">
           {title}
         </Typography>
 
-        <Typography fontSize={14} color="#555">
+        <Typography fontSize={15} color="#444" lineHeight={1.6}>
           {text}
         </Typography>
       </Box>
@@ -72,9 +79,11 @@ export default function PostCard({
             sx={{
               px: 2,
               py: 0.5,
-              borderRadius: 10,
+              borderRadius: 20,
               fontSize: 12,
-              bgcolor: "#E6E0F8",
+              bgcolor: "#f3e8ff",
+              color: "#6a1b9a",
+              fontWeight: 600,
             }}
           >
             {t}
@@ -92,12 +101,14 @@ export default function PostCard({
         }}
       >
         <Box sx={{ display: "flex", gap: 4 }}>
-          <Action icon={<FavoriteIcon  sx={{
-            color:"#9946ec"
-          }} />} label={likes} active={liked} />
-          <div onClick={verComentarios}>
+          <Action
+            icon={<FavoriteIcon sx={{ color: liked ? "#9947eb" : "#555" }} />}
+            label={likes}
+            active={liked}
+          />
+          <Box onClick={verComentarios}>
             <Action icon={<ChatBubbleIcon />} label={comments} />
-          </div>
+          </Box>
         </Box>
 
         <Action icon={<ShareIcon />} />
@@ -108,8 +119,17 @@ export default function PostCard({
 
 function Action({ icon, label, active }) {
   return (
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1, cursor: "pointer" }}>
-      <Box sx={{ color: active ? "#9947eb" : "#555" }}>{icon}</Box>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: 1,
+        cursor: "pointer",
+        transition: "color 0.3s ease",
+        "&:hover": { color: "#9947eb" },
+      }}
+    >
+      <Box sx={{ color: active ? "#9947eb" : "inherit" }}>{icon}</Box>
       {label && <Typography fontSize={14}>{label}</Typography>}
     </Box>
   );

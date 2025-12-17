@@ -138,11 +138,7 @@ export default function Main() {
                   <Typography sx={{ fontSize: "0.85rem", fontWeight: "bold", mb: 1 }}>
                     Autor
                   </Typography>
-                  <Select fullWidth defaultValue="Dra. Elena García" size="small">
-                    <MenuItem>Dra. Elena García</MenuItem>
-                    <MenuItem>Dr. Marcos Reyes</MenuItem>
-                    <MenuItem>Sin autor</MenuItem>
-                  </Select>
+                  <TextField fullWidth placeholder="Autor" size="small" />
                 </Box>
 
                 {/* Estado */}

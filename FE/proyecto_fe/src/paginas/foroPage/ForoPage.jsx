@@ -48,7 +48,7 @@ export default function ForoPage() {
           overflow="auto"
           p={1}
           display="flex"
-          justifyContent="left"
+          justifyContent="center"
           sx={{ overflowX: "hidden" }}
         >
           <Box

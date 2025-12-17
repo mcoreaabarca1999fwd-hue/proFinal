@@ -17,6 +17,11 @@ export default function ForoPage() {
       const peticion = await getData(`foro/publicacion/${localStorage.getItem('idPublicacion')}/`)
       setPublicacion(peticion[0])
     }
+    async function mostrarComentarios() {
+      const peticion = await getData(`foro/comentarios-publicacion/${localStorage.getItem('idPublicacion')}/`)
+      console.log(peticion)
+    }
+    mostrarComentarios()
     mostrarPublicacion()
   },[])
 

@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Typography, IconButton, Button } from "@mui/material";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
 import "../../estilos/cycle.css";
 import ModalCiclo from "./RegistroCiclo";
+import axios from "axios";
 
-export default function CalendarCycle() {
-  const [currentDate, setCurrentDate] = useState(new Date(2025, 11));
+export default function CalendarCycle({ usuarioId }) {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [abrirModal, setAbrirModal] = useState(false);
+  const [ciclos, setCiclos] = useState([]);
 
   const today = new Date();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
-  const [abrirModal, setAbrirModal] = useState(false);
   const monthName = currentDate.toLocaleString("es-ES", { month: "long" });
+
+  /* =========================
+     TRAER CICLOS DEL USUARIO
+     ========================= */
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/ciclos/ciclo-usuario/${localStorage.getItem("idUsuario")}/`)
+      .then((res) => setCiclos(res.data))
+      .catch((err) => console.error(err));
+  }, [localStorage.getItem("idUsuario")]);
 
   const firstDayOfMonth = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -27,10 +39,22 @@ export default function CalendarCycle() {
   const handlePrevMonth = () => setCurrentDate(new Date(year, month - 1));
   const handleNextMonth = () => setCurrentDate(new Date(year, month + 1));
 
+  const isDayInCycle = (day) => {
+    if (!day) return false;
+
+    const dateToCheck = new Date(year, month, day);
+
+    return ciclos.some((ciclo) => {
+      const inicio = new Date(ciclo.fecha_inicio);
+      const fin = new Date(ciclo.fecha_fin);
+      return dateToCheck >= inicio && dateToCheck <= fin;
+    });
+  };
+
   return (
     <Box
       sx={{
-        width: "125%",
+        width: "100%",
         bgcolor: "white",
         p: 4,
         borderRadius: 3,
@@ -76,25 +100,15 @@ export default function CalendarCycle() {
             today.getMonth() === month &&
             today.getFullYear() === year;
 
-          const bg =
-            i === 16
-              ? "var(--muted-teal)"
-              : i >= 11 && i <= 13
-              ? "var(--sky-blue)"
-              : i >= 8 && i <= 10
-              ? "var(--soft-blush)"
-              : "transparent";
-
-          const radius = i === 16 || (i >= 8 && i <= 10) ? "12px" : "8px";
+          const inCycle = isDayInCycle(day);
 
           return (
             <div
               key={i}
               className="day-cell"
               style={{
-                background: bg,
-                borderRadius: isToday ? "50%" : radius,
-                color: i === 16 ? "white" : "inherit",
+                background: inCycle ? "var(--soft-blush)" : "transparent",
+                borderRadius: isToday ? "50%" : "8px",
                 opacity: day ? 1 : 0.15,
                 outline: isToday ? "2px solid var(--muted-teal)" : "none",
                 fontWeight: isToday ? "bold" : "normal",
@@ -109,15 +123,11 @@ export default function CalendarCycle() {
       {/* LEGEND */}
       <Box mt={3} display="flex" flexWrap="wrap" gap={4}>
         <Legend color="var(--soft-blush)" label="Período" />
-        <Legend color="var(--sky-blue)" label="Ventana fértil" />
-        <Legend color="var(--muted-teal)" label="Ovulación" />
       </Box>
 
       <Button
         variant="contained"
-        sx={{ 
-          backgroundColor: "#8a3dda",
-          mt: 3 }}
+        sx={{ backgroundColor: "#8a3dda", mt: 3 }}
         onClick={() => setAbrirModal(true)}
       >
         Añadir Período

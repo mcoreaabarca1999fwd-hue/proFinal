@@ -59,8 +59,9 @@ export default function TopNavBar() {
       {/* Links + Botones */}
       <Box display={{ xs: "none", md: "flex" }} alignItems="center" gap={4}>
         <Box display="flex" gap={3}>
-          {["Funcionalidades", "Comunidad", "Recursos"].map((item, idx) => (
-            <Typography
+          {["Comunidad"].map((item, idx) => (
+            <Typography 
+            onClick={() => navigate('/foro')}
               key={idx}
               sx={{
                 fontSize: 14,

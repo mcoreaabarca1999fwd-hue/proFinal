@@ -33,7 +33,7 @@ export default function ReportTable({
             <TableRow>
               <TableCell sx={{ fontWeight: 700 }}>Contenido</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Usuario</TableCell>
-              <TableCell sx={{ fontWeight: 700 }}>De</TableCell>
+              <TableCell sx={{ fontWeight: 700 }}>Título</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Fecha</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Estado</TableCell>
               <TableCell align="right">
