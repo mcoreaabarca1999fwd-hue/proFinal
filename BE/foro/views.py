@@ -40,6 +40,13 @@ class ComentarioCreateView(ListCreateAPIView):
     queryset = Comentario.objects.all()
     serializer_class = ComentarioSerializer
 
+class ComentarioPorPublicacionView(ListAPIView):
+    serializer_class = ComentarioSerializer
+
+    def get_queryset(self):
+        publicacion_id = self.kwargs['publicacion_id']
+        return Comentario.objects.filter(Publicacion__id=publicacion_id)
+
 class ReaccionCreateView(ListCreateAPIView):
     queryset = Reaccion.objects.all()
     serializer_class = ReaccionSerializer

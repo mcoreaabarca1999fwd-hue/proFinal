@@ -14,9 +14,10 @@ class PublicacionSerializer(ModelSerializer):
     nombre_usuario = serializers.CharField(source='Usuario.username', read_only=True)
     class Meta:
         model = Publicacion
-        fields = ["id", "Usuario", "nombre_usuario", "etiquetaForo", "titulo", "contenido", "fecha_creacion"]
+        fields = "__all__"
 
 class ComentarioSerializer(ModelSerializer):
+    nombre_usuario = serializers.CharField(source='Usuario.username', read_only=True)
     class Meta:
         model = Comentario
         fields = "__all__"

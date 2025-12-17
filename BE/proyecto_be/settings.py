@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'ciclos',
     'foro',
     'rest_framework_simplejwt',
+    'educacion'
 ]
 
 AUTH_USER_MODEL = "usuarios.Usuario"

@@ -8,6 +8,8 @@ class CicloCreateView(ListCreateAPIView):
     queryset = Ciclo.objects.all()
     serializer_class = CicloSerializer
 
+
+
 class RegisSintoCreateView(ListCreateAPIView):
     queryset = RegistroSintoma.objects.all()
     serializer_class = RegisSintomaSerializer
