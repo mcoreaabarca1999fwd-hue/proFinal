@@ -184,7 +184,11 @@ export default function CycleHistoryForm() {
               sx={{ color: "gray" }}>Omitir por ahora</Button>
 
               <Button
-                onClick={agregarCiclo}
+
+                onClick={() => {
+                  agregarCiclo();
+                  navigate('/bienvenidx');
+                }}
                 variant="contained"
                 sx={{
                   bgcolor: "#D67C97",

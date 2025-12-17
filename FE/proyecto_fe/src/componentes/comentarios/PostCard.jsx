@@ -98,7 +98,7 @@ export default function PostCard({ usuario, fechaPublicacion, titulo, descripcio
         >
           <Box sx={{ display: "flex", gap: 4 }}>
             <Action icon={<FavoriteIcon sx={{ color: "#9947eb" }} />} label="∞" />
-            <Action icon={<ChatBubbleOutlineIcon />} label="0" />
+            <Action icon={<ChatBubbleOutlineIcon />} />
           </Box>
           <Action icon={<ShareIcon />} />
         </Box>
